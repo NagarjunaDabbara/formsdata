@@ -3,11 +3,14 @@ const bodyParser = require("body-parser")
 const mongu = require('mongoose')
 const app = express()
 const mongoose = require('mongoose');
+const port = process.env.PORT || 9000
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.set('view engine','ejs')
 app.use(express.static('./public'))
 //mongoose.connect('mongodb://localhost/formdata')
+
 mongoose.connect('mongodb://arjun1:arjun1@ds259253.mlab.com:59253/mongouploads')
 
 
@@ -32,6 +35,6 @@ studentDetails.save().then(function(data){
     res.send(err)
   })
 })
-app.listen(9000,function(){
+app.listen(port,function(){
     console.log('server started')
 })
